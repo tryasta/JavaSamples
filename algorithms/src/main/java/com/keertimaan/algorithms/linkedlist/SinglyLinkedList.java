@@ -15,6 +15,8 @@
 
 package com.keertimaan.algorithms.linkedlist;
 
+import java.util.Optional;
+
 /**
  * Singly linked list implementation.
  *
@@ -39,11 +41,13 @@ public class SinglyLinkedList<T> {
    * @param value the value to be inserted.
    */
   public void insert(T value) {
-    if (head == null) {
-      head = new Node<>(value);
-    } else {
-      head.next = new Node<>(value);
-    }
+    head = Optional.ofNullable(head)
+        .map(headNode -> {
+          headNode.next = new Node<>(value);
+          return headNode;
+        })
+        .orElse(new Node<>(value));
+
     count++;
   }
 
