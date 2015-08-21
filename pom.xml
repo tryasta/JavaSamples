@@ -25,6 +25,7 @@
     <module>access-reader</module>
     <module>experiments</module>
     <module>spring-example</module>
+    <module>algorithms</module>
   </modules>
 
   <dependencies>
