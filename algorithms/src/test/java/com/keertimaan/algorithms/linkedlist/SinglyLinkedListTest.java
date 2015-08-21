@@ -147,6 +147,17 @@ public class SinglyLinkedListTest {
     assertThat(singlyLinkedList.contains(toBeRemoved)).isFalse();
   }
 
+  @Test
+  public void testRemoveForNonexistentelement() {
+    final String toBeRemoved = "five";
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    singlyLinkedList.insert("one");
+    singlyLinkedList.insert("two");
+    singlyLinkedList.insert("three");
+    singlyLinkedList.insert("four");
+    assertThat(singlyLinkedList.remove(toBeRemoved)).isFalse();
+  }
+
   private void verifyCountForNInsert(int numberOfInsert) {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     IntStream.range(0, numberOfInsert)

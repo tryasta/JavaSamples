@@ -102,7 +102,7 @@ public class SinglyLinkedList<T> {
       traversingHead = traversingHead.next;
     }
 
-    if (traversingHead == null) {
+    if (traversingHead == null || traversingHead.next == null) {
       return false;
     } else {
       traversingHead.next = traversingHead.next.next;
