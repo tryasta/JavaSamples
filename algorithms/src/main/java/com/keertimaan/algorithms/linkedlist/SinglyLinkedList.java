@@ -109,6 +109,9 @@ public class SinglyLinkedList<T> {
     return removeElement(element);
   }
 
+  /**
+   * Reverses the order of the element in this list.
+   */
   public void reverse() {
     if (isEmpty()) {
       return;
