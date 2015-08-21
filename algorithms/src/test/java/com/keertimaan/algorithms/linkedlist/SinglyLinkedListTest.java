@@ -39,6 +39,14 @@ public class SinglyLinkedListTest {
   }
 
   @Test
+  public void testEmptiness() {
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    assertThat(singlyLinkedList.isEmpty()).isTrue();
+    singlyLinkedList.insert("Dummy");
+    assertThat(singlyLinkedList.isEmpty()).isFalse();
+  }
+
+  @Test
   public void testRetrievalInListFromEmptySinglyList() {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     assertThat(singlyLinkedList.asList()).isEmpty();
