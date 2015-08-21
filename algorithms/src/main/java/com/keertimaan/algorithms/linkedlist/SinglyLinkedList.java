@@ -97,17 +97,7 @@ public class SinglyLinkedList<T> {
       return true;
     }
 
-    Node<T> traversingHead = head;
-    while (traversingHead != null && traversingHead.next != null && !element.equals(traversingHead.next.value)) {
-      traversingHead = traversingHead.next;
-    }
-
-    if (traversingHead == null || traversingHead.next == null) {
-      return false;
-    } else {
-      traversingHead.next = traversingHead.next.next;
-      return true;
-    }
+    return removeElement(element);
   }
 
   private T insertElement(T element) {
@@ -137,6 +127,20 @@ public class SinglyLinkedList<T> {
     }
 
     return false;
+  }
+
+  private boolean removeElement(T element) {
+    Node<T> traversingHead = head;
+    while (traversingHead != null && traversingHead.next != null && !element.equals(traversingHead.next.value)) {
+      traversingHead = traversingHead.next;
+    }
+
+    if (traversingHead == null || traversingHead.next == null) {
+      return false;
+    } else {
+      traversingHead.next = traversingHead.next.next;
+      return true;
+    }
   }
 
   private static class Node<T> {
