@@ -90,6 +90,63 @@ public class SinglyLinkedListTest {
     assertThat(singlyLinkedList.contains(secondString)).isTrue();
   }
 
+  @Test
+  public void testRemoveFromEmptyList() {
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    assertThat(singlyLinkedList.remove("test")).isFalse();
+  }
+
+  @Test
+  public void testRemoveFromSingleElementList() {
+    final String toBeRemoved = "test";
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    singlyLinkedList.insert(toBeRemoved);
+    assertThat(singlyLinkedList.remove(toBeRemoved)).isTrue();
+    assertThat(singlyLinkedList.contains(toBeRemoved)).isFalse();
+  }
+
+  @Test
+  public void testRemoveFirstElement() {
+    final String toBeRemoved = "test";
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    singlyLinkedList.insert(toBeRemoved);
+    singlyLinkedList.insert("two");
+    assertThat(singlyLinkedList.remove(toBeRemoved)).isTrue();
+    assertThat(singlyLinkedList.contains(toBeRemoved)).isFalse();
+  }
+
+  @Test
+  public void testRemovalOfOneOfTheDuplicates() {
+    final String toBeRemoved = "test";
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    singlyLinkedList.insert(toBeRemoved);
+    singlyLinkedList.insert(toBeRemoved);
+    assertThat(singlyLinkedList.remove(toBeRemoved)).isTrue();
+    assertThat(singlyLinkedList.contains(toBeRemoved)).isTrue();
+  }
+
+  @Test
+  public void testRemoveFromMiddleOfList() {
+    final String toBeRemoved = "two";
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    singlyLinkedList.insert("one");
+    singlyLinkedList.insert(toBeRemoved);
+    singlyLinkedList.insert("three");
+    assertThat(singlyLinkedList.remove(toBeRemoved)).isTrue();
+    assertThat(singlyLinkedList.contains(toBeRemoved)).isFalse();
+  }
+
+  @Test
+  public void testRemoveFromLast() {
+    final String toBeRemoved = "three";
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    singlyLinkedList.insert("one");
+    singlyLinkedList.insert("two");
+    singlyLinkedList.insert(toBeRemoved);
+    assertThat(singlyLinkedList.remove(toBeRemoved)).isTrue();
+    assertThat(singlyLinkedList.contains(toBeRemoved)).isFalse();
+  }
+
   private void verifyCountForNInsert(int numberOfInsert) {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     IntStream.range(0, numberOfInsert)

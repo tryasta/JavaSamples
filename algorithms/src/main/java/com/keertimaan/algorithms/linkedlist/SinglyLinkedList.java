@@ -89,6 +89,30 @@ public class SinglyLinkedList<T> {
         .isPresent();
   }
 
+  public boolean remove(T element) {
+    Optional<T> elementToBeRemoved = Optional.of(element);
+    if (!elementToBeRemoved.isPresent()) {
+      return false;
+    }
+
+    Node<T> traversingHead = head;
+    if (traversingHead != null && element.equals(traversingHead.value)) {
+      head = traversingHead.next;
+      return true;
+    }
+
+    while (traversingHead != null && traversingHead.next != null && !element.equals(traversingHead.next.value)) {
+      traversingHead = traversingHead.next;
+    }
+
+    if (traversingHead == null) {
+      return false;
+    } else {
+      traversingHead.next = traversingHead.next.next;
+      return true;
+    }
+  }
+
   private T insertElement(T element) {
     if (isEmpty()) {
       head = new Node<>(element);
