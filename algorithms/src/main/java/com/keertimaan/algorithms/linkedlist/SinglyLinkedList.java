@@ -60,6 +60,11 @@ public class SinglyLinkedList<T> {
     count++;
   }
 
+  /**
+   * Returns the current values stored in this list. The values are returned in their traversing order.
+   *
+   * @return a list containing the elements of this list.
+   */
   public List<T> asList() {
     Node<T> traversingHead = head;
     List<T> elementList = new ArrayList<>();
