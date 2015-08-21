@@ -39,6 +39,21 @@ public class SinglyLinkedListTest {
   }
 
   @Test
+  public void testNullValueInsert() {
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    assertThat(singlyLinkedList.insert(null)).isFalse();
+    assertThat(singlyLinkedList.contains(null)).isFalse();
+  }
+
+  @Test
+  public void testNonNullValueInsert() {
+    final String dummyValue = "Dummy";
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    assertThat(singlyLinkedList.insert(dummyValue)).isTrue();
+    assertThat(singlyLinkedList.contains(dummyValue)).isTrue();
+  }
+
+  @Test
   public void testEmptiness() {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     assertThat(singlyLinkedList.isEmpty()).isTrue();

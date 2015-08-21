@@ -47,18 +47,24 @@ public class SinglyLinkedList<T> {
   }
 
   /**
-   * Inserts the given value at the end of the list.
+   * Inserts the given non-null element at the end of the list.
    *
-   * @param value the value to be inserted.
+   * @param element the element to be inserted.
+   * @return true if the element has been successfully inserted, false otherwise.
    */
-  public void insert(T value) {
-    if (isEmpty()) {
-      head = new Node<>(value);
-    } else {
-      Node<T> lastNode = getLastNode();
-      lastNode.next = new Node<>(value);
-    }
-    count++;
+  public boolean insert(T element) {
+    final Optional<T> elementToBeInserted = Optional.ofNullable(element);
+    elementToBeInserted.ifPresent(value -> {
+      if (isEmpty()) {
+        head = new Node<>(value);
+      } else {
+        Node<T> lastNode = getLastNode();
+        lastNode.next = new Node<>(value);
+      }
+      count++;
+    });
+
+    return elementToBeInserted.isPresent();
   }
 
   /**
