@@ -16,16 +16,28 @@
 package com.keertimaan.algorithms.linkedlist;
 
 /**
+ * Singly linked list implementation.
+ *
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
 public class SinglyLinkedList<T> {
   private Node<T> head;
   private int count;
 
+  /**
+   * Returns the total number of elements currently stored in the list.
+   *
+   * @return total number of elemnts currently stored in the list
+   */
   public int count() {
     return count;
   }
 
+  /**
+   * Inserts the given value at the end of the list.
+   *
+   * @param value the value to be inserted.
+   */
   public void insert(T value) {
     if (head == null) {
       head = new Node<>(value);
