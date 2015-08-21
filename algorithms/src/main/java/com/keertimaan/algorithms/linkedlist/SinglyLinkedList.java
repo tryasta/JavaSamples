@@ -93,14 +93,11 @@ public class SinglyLinkedList<T> {
     Optional<T> elementToBeRemoved = Optional.of(element);
     if (!elementToBeRemoved.isPresent()) {
       return false;
-    }
-
-    Node<T> traversingHead = head;
-    if (traversingHead != null && element.equals(traversingHead.value)) {
-      head = traversingHead.next;
+    } else if (hasBeenRemovedFromHead(element)) {
       return true;
     }
 
+    Node<T> traversingHead = head;
     while (traversingHead != null && traversingHead.next != null && !element.equals(traversingHead.next.value)) {
       traversingHead = traversingHead.next;
     }
@@ -131,6 +128,15 @@ public class SinglyLinkedList<T> {
     }
 
     return traversingHead;
+  }
+
+  private boolean hasBeenRemovedFromHead(T element) {
+    if (head != null && element.equals(head.value)) {
+      head = head.next;
+      return true;
+    }
+
+    return false;
   }
 
   private static class Node<T> {
