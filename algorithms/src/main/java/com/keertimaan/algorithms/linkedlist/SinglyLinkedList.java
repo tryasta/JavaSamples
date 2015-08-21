@@ -36,19 +36,22 @@ public class SinglyLinkedList<T> {
     return count;
   }
 
+  public boolean isEmpty() {
+    return count == 0;
+  }
+
   /**
    * Inserts the given value at the end of the list.
    *
    * @param value the value to be inserted.
    */
   public void insert(T value) {
-    if (head == null) {
+    if (isEmpty()) {
       head = new Node<>(value);
     } else {
       Node<T> lastNode = getLastNode();
       lastNode.next = new Node<>(value);
     }
-
     count++;
   }
 
