@@ -17,6 +17,9 @@ package com.keertimaan.algorithms.linkedlist;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,10 +38,29 @@ public class SinglyLinkedListTest {
     testCountForNInsert(100);
   }
 
+  @Test
+  public void testRetrievalInListFromEmptySinglyList() {
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    assertThat(singlyLinkedList.asList()).isEmpty();
+  }
+
+  @Test
+  public void testRetrievalInListFromPopulatedSinglyList() {
+    verifyRetrievalAfterMultiInsert(Collections.singletonList("One"));
+    verifyRetrievalAfterMultiInsert(Arrays.asList("One", "Two", "Three", "Four"));
+  }
+
   private void testCountForNInsert(int numberOfInsert) {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     IntStream.range(0, numberOfInsert)
         .forEach(index -> singlyLinkedList.insert(index + ""));
     assertThat(singlyLinkedList.count()).isEqualTo(numberOfInsert);
+  }
+
+  private void verifyRetrievalAfterMultiInsert(List<String> elements) {
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    elements.stream()
+        .forEach(singlyLinkedList::insert);
+    assertThat(singlyLinkedList.asList()).isEqualTo(elements);
   }
 }

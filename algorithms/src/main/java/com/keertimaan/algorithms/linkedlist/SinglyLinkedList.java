@@ -15,7 +15,8 @@
 
 package com.keertimaan.algorithms.linkedlist;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Singly linked list implementation.
@@ -41,14 +42,34 @@ public class SinglyLinkedList<T> {
    * @param value the value to be inserted.
    */
   public void insert(T value) {
-    head = Optional.ofNullable(head)
-        .map(headNode -> {
-          headNode.next = new Node<>(value);
-          return headNode;
-        })
-        .orElse(new Node<>(value));
+    if (head == null) {
+      head = new Node<>(value);
+    } else {
+      Node<T> lastNode = getLastNode();
+      lastNode.next = new Node<>(value);
+    }
 
     count++;
+  }
+
+  public List<T> asList() {
+    Node<T> traversingHead = head;
+    List<T> elementList = new ArrayList<>();
+    while (traversingHead != null) {
+      elementList.add(traversingHead.value);
+      traversingHead = traversingHead.next;
+    }
+
+    return elementList;
+  }
+
+  private Node<T> getLastNode() {
+    Node<T> traversingHead = head;
+    while (traversingHead.next != null) {
+      traversingHead = traversingHead.next;
+    }
+
+    return traversingHead;
   }
 
   private static class Node<T> {
