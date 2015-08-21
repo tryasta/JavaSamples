@@ -36,6 +36,11 @@ public class SinglyLinkedList<T> {
     return count;
   }
 
+  /**
+   * Checks whether or not the list is empty.
+   *
+   * @return true if the list is empty, false otherwise.
+   */
   public boolean isEmpty() {
     return count == 0;
   }
