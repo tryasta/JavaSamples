@@ -89,6 +89,13 @@ public class SinglyLinkedList<T> {
         .isPresent();
   }
 
+  /**
+   * Remove the given non-null element from the list. If the element is not in the list, or null is given as the
+   * argument, then nothing is removed.
+   *
+   * @param element the element to be removed
+   * @return true if the element has been removed successfully, false otherwise.
+   */
   public boolean remove(T element) {
     Optional<T> elementToBeRemoved = Optional.of(element);
     if (!elementToBeRemoved.isPresent()) {
