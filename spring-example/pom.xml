@@ -4,6 +4,7 @@
 
   <properties>
     <spring.version>4.2.0.RELEASE</spring.version>
+    <javax.inject.version>1</javax.inject.version>
   </properties>
 
   <parent>
@@ -22,6 +23,13 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>${spring.version}</version>
+    </dependency>
+
+    <!-- Standard Dependency Injection API -->
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>${javax.inject.version}</version>
     </dependency>
 
     <!-- Test -->

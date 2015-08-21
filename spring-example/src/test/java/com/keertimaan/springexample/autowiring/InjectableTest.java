@@ -15,8 +15,43 @@
 
 package com.keertimaan.springexample.autowiring;
 
+import com.keertimaan.springexample.AbstractSpringTest;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.annotation.Resource;
+import javax.inject.Inject;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
-public class InjectableTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+public class InjectableTest extends AbstractSpringTest {
+
+  @Autowired
+  @First
+  private Injectable autoWired;
+
+  @Resource
+  @Second
+  private Injectable resource;
+
+  @Inject
+  @First
+  private Injectable inject;
+
+  @Test
+  public void testAutoWiredInjection() {
+    assertThat(autoWired).isNotNull();
+    assertThat(resource).isNotNull();
+    assertThat(inject).isNotNull();
+
+    autoWired.sayHello();
+    resource.sayHello();
+    inject.sayHello();
+  }
 }

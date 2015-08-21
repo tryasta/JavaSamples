@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,17 +17,15 @@ package com.keertimaan.springexample.autowiring;
 
 import org.springframework.stereotype.Component;
 
-import javax.inject.Qualifier;
-
 /**
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
 @Component
-@First
-public class FirstInjectable implements Injectable {
+@Second
+public class SecondInjectable implements Injectable {
 
   @Override
   public void sayHello() {
-    System.out.println("I am FirstInjectable!");
+    System.out.println("Hi, I am second injectable!");
   }
 }
