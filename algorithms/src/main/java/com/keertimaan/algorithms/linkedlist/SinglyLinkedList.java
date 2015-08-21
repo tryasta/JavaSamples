@@ -17,6 +17,7 @@ package com.keertimaan.algorithms.linkedlist;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Singly linked list implementation.
@@ -74,6 +75,16 @@ public class SinglyLinkedList<T> {
     }
 
     return elementList;
+  }
+
+  public boolean contains(T element) {
+    Node<T> traversingHead = head;
+    while (traversingHead != null && !traversingHead.value.equals(element)) {
+      traversingHead = traversingHead.next;
+    }
+
+    return Optional.ofNullable(traversingHead)
+        .isPresent();
   }
 
   private Node<T> getLastNode() {

@@ -58,6 +58,23 @@ public class SinglyLinkedListTest {
     verifyRetrievalAfterMultiInsert(Arrays.asList("One", "Two", "Three", "Four"));
   }
 
+  @Test
+  public void testFindingNonExistentElement() {
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    assertThat(singlyLinkedList.contains("test")).isFalse();
+  }
+
+  @Test
+  public void testFindingExistingElement() {
+    final String firstString = "One";
+    final String secondString = "Two";
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    singlyLinkedList.insert(firstString);
+    assertThat(singlyLinkedList.contains(firstString)).isTrue();
+    singlyLinkedList.insert(secondString);
+    assertThat(singlyLinkedList.contains(secondString)).isTrue();
+  }
+
   private void verifyCountForNInsert(int numberOfInsert) {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     IntStream.range(0, numberOfInsert)
