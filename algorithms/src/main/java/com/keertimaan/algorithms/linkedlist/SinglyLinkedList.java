@@ -53,18 +53,9 @@ public class SinglyLinkedList<T> {
    * @return true if the element has been successfully inserted, false otherwise.
    */
   public boolean insert(T element) {
-    final Optional<T> elementToBeInserted = Optional.ofNullable(element);
-    elementToBeInserted.ifPresent(value -> {
-      if (isEmpty()) {
-        head = new Node<>(value);
-      } else {
-        Node<T> lastNode = getLastNode();
-        lastNode.next = new Node<>(value);
-      }
-      count++;
-    });
-
-    return elementToBeInserted.isPresent();
+    return Optional.ofNullable(element)
+        .map(this::insertElement)
+        .isPresent();
   }
 
   /**
@@ -91,6 +82,17 @@ public class SinglyLinkedList<T> {
 
     return Optional.ofNullable(traversingHead)
         .isPresent();
+  }
+
+  private T insertElement(T element) {
+    if (isEmpty()) {
+      head = new Node<>(element);
+    } else {
+      Node<T> lastNode = getLastNode();
+      lastNode.next = new Node<>(element);
+    }
+    count++;
+    return element;
   }
 
   private Node<T> getLastNode() {
