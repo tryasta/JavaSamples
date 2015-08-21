@@ -158,6 +158,15 @@ public class SinglyLinkedListTest {
     assertThat(singlyLinkedList.remove(toBeRemoved)).isFalse();
   }
 
+  @SuppressWarnings("unchecked")
+  @Test
+  public void testElementReversal() {
+    verifyListReversal(Collections.EMPTY_LIST);
+    verifyListReversal(Collections.singletonList("Hello"));
+    verifyListReversal(Arrays.asList("First", "Second", "Third"));
+    verifyListReversal(Arrays.asList("First", "Second", "Third", "Fourth", "Fifth"));
+  }
+
   private void verifyCountForNInsert(int numberOfInsert) {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     IntStream.range(0, numberOfInsert)
@@ -169,6 +178,15 @@ public class SinglyLinkedListTest {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     elements.stream()
         .forEach(singlyLinkedList::insert);
+    assertThat(singlyLinkedList.asList()).isEqualTo(elements);
+  }
+
+  private void verifyListReversal(List<String> elements) {
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    elements.stream()
+        .forEach(singlyLinkedList::insert);
+    singlyLinkedList.reverse();
+    Collections.reverse(elements);
     assertThat(singlyLinkedList.asList()).isEqualTo(elements);
   }
 }

@@ -15,7 +15,9 @@
 
 package com.keertimaan.algorithms.linkedlist;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 import java.util.Optional;
 
@@ -107,6 +109,22 @@ public class SinglyLinkedList<T> {
     return removeElement(element);
   }
 
+  public void reverse() {
+    if (isEmpty()) {
+      return;
+    }
+
+    Deque<Node<T>> reversedNodes = getReversedNodes();
+    head = reversedNodes.removeFirst();
+    Node<T> traversingHead = head;
+    while (!reversedNodes.isEmpty()) {
+      Node<T> currentNode = reversedNodes.removeFirst();
+      currentNode.next = null;
+      traversingHead.next = currentNode;
+      traversingHead = traversingHead.next;
+    }
+  }
+
   private T insertElement(T element) {
     if (isEmpty()) {
       head = new Node<>(element);
@@ -148,6 +166,16 @@ public class SinglyLinkedList<T> {
       traversingHead.next = traversingHead.next.next;
       return true;
     }
+  }
+
+  private Deque<Node<T>> getReversedNodes() {
+    Deque<Node<T>> stack = new ArrayDeque<>(count);
+    Node<T> traversingHead = head;
+    while (traversingHead != null) {
+      stack.addFirst(traversingHead);
+      traversingHead = traversingHead.next;
+    }
+    return stack;
   }
 
   private static class Node<T> {
