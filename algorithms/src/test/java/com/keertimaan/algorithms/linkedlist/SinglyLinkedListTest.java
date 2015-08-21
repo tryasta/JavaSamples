@@ -31,11 +31,11 @@ public class SinglyLinkedListTest {
 
   @Test
   public void testCountAfterMultipleInsertInANewList() {
-    testCountForNInsert(0);
-    testCountForNInsert(1);
-    testCountForNInsert(3);
-    testCountForNInsert(10);
-    testCountForNInsert(100);
+    verifyCountForNInsert(0);
+    verifyCountForNInsert(1);
+    verifyCountForNInsert(3);
+    verifyCountForNInsert(10);
+    verifyCountForNInsert(100);
   }
 
   @Test
@@ -50,7 +50,7 @@ public class SinglyLinkedListTest {
     verifyRetrievalAfterMultiInsert(Arrays.asList("One", "Two", "Three", "Four"));
   }
 
-  private void testCountForNInsert(int numberOfInsert) {
+  private void verifyCountForNInsert(int numberOfInsert) {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     IntStream.range(0, numberOfInsert)
         .forEach(index -> singlyLinkedList.insert(index + ""));
