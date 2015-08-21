@@ -74,6 +74,12 @@ public class SinglyLinkedList<T> {
     return elementList;
   }
 
+  /**
+   * Checks whether or not the given element exists in this list.
+   *
+   * @param element the element to look for.
+   * @return true if the element exists in the list, false otherwise.
+   */
   public boolean contains(T element) {
     Node<T> traversingHead = head;
     while (traversingHead != null && !traversingHead.value.equals(element)) {
