@@ -17,6 +17,8 @@ package com.keertimaan.algorithms.linkedlist;
 
 import org.junit.Test;
 
+import java.util.stream.IntStream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -25,11 +27,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SinglyLinkedListTest {
 
   @Test
-  public void testCountAfterInsertInANewList() {
-    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+  public void testCountAfterMultipleInsertInANewList() {
+    testCountForNInsert(0);
+    testCountForNInsert(1);
+    testCountForNInsert(3);
+    testCountForNInsert(10);
+    testCountForNInsert(100);
+  }
 
-    assertThat(singlyLinkedList.count()).isEqualTo(0);
-    singlyLinkedList.insert("I am root");
-    assertThat(singlyLinkedList.count()).isEqualTo(1);
+  private void testCountForNInsert(int numberOfInsert) {
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    IntStream.range(0, numberOfInsert)
+        .forEach(index -> singlyLinkedList.insert(index + ""));
+    assertThat(singlyLinkedList.count()).isEqualTo(numberOfInsert);
   }
 }
