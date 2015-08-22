@@ -113,19 +113,18 @@ public class SinglyLinkedList<T> {
    * Reverses the order of the element in this list.
    */
   public void reverse() {
-    if (isEmpty()) {
-      return;
+    Node<T> current = head;
+    Node<T> next;
+    Node<T> previous = null;
+
+    while (current != null) {
+      next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
     }
 
-    Deque<Node<T>> reversedNodes = getReversedNodes();
-    head = reversedNodes.removeFirst();
-    Node<T> traversingHead = head;
-    while (!reversedNodes.isEmpty()) {
-      Node<T> currentNode = reversedNodes.removeFirst();
-      currentNode.next = null;
-      traversingHead.next = currentNode;
-      traversingHead = traversingHead.next;
-    }
+    head = previous;
   }
 
   private T insertElement(T element) {
@@ -169,16 +168,6 @@ public class SinglyLinkedList<T> {
       traversingHead.next = traversingHead.next.next;
       return true;
     }
-  }
-
-  private Deque<Node<T>> getReversedNodes() {
-    Deque<Node<T>> stack = new ArrayDeque<>(count);
-    Node<T> traversingHead = head;
-    while (traversingHead != null) {
-      stack.addFirst(traversingHead);
-      traversingHead = traversingHead.next;
-    }
-    return stack;
   }
 
   private static class Node<T> {
