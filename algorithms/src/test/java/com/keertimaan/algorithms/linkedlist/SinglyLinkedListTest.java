@@ -185,7 +185,7 @@ public class SinglyLinkedListTest {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     elements.stream()
         .forEach(singlyLinkedList::insert);
-    singlyLinkedList.reverse();
+    singlyLinkedList.reverseIterative();
     Collections.reverse(elements);
     assertThat(singlyLinkedList.asList()).isEqualTo(elements);
   }

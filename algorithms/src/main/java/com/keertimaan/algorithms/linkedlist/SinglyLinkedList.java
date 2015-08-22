@@ -15,9 +15,7 @@
 
 package com.keertimaan.algorithms.linkedlist;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
 import java.util.Optional;
 
@@ -110,9 +108,9 @@ public class SinglyLinkedList<T> {
   }
 
   /**
-   * Reverses the order of the element in this list.
+   * Reverses the order of the element in this list. Uses iterative approach.
    */
-  public void reverse() {
+  public void reverseIterative() {
     Node<T> current = head;
     Node<T> next;
     Node<T> previous = null;
