@@ -70,6 +70,7 @@ public class SinglyLinkedListTest {
   @Test
   public void testRetrievalInListFromPopulatedSinglyList() {
     verifyRetrievalAfterMultiInsert(Collections.singletonList("One"));
+    verifyRetrievalAfterMultiInsert(Collections.emptyList());
     verifyRetrievalAfterMultiInsert(Arrays.asList("One", "Two", "Three", "Four"));
   }
 
