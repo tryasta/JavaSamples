@@ -169,6 +169,41 @@ public class SinglyLinkedList<T> {
     head = reverseRecursive(head);
   }
 
+  public void reverseBetween(int begin, int end) {
+    if (begin == end) {
+      return;
+    }
+
+    Node<T> current = head;
+    Node<T> start = head;
+    Node<T> next = head;
+    Node<T> previous = null;
+
+    for (int i = 1; i <= end; i++) {
+      if (i < begin) {
+        if ( (i + 1) == begin) {
+          start = current;
+        }
+
+        current = current.next;
+      } else {
+        next = current.next;
+        current.next = previous;
+        previous = current;
+        current = next;
+      }
+    }
+
+    if (begin == 1) {
+      start.next = next;
+      start = previous;
+      head = start;
+    } else {
+      start.next.next = next;
+      start.next = previous;
+    }
+  }
+
   private Node<T> reverseRecursive(Node<T> current) {
     if (current.next == null) {
       return current;

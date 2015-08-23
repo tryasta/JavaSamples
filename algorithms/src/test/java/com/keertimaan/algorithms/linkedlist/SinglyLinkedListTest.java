@@ -175,6 +175,18 @@ public class SinglyLinkedListTest {
     verifyListReversalRecursive(Arrays.asList("First", "Second", "Third", "Fourth", "Fifth"));
   }
 
+  @Test
+  public void testReverseInBetweenStartingFromHeadAndPortionOfList() {
+    verifyReverseInBetween(Arrays.asList("one", "two", "three", "four"), 1, 3);
+    verifyReverseInBetween(Arrays.asList("one", "two", "three", "four"), 1, 4);
+    verifyReverseInBetween(Collections.singletonList("One"), 1, 1);
+    verifyReverseInBetween(Arrays.asList("1", "2", "3", "4", "5"), 2, 3);
+    verifyReverseInBetween(Arrays.asList("1", "2", "3", "4", "5"), 2, 5);
+    verifyReverseInBetween(Arrays.asList("1", "2", "3", "4", "5"), 4, 5);
+    verifyReverseInBetween(Arrays.asList("1", "2", "3", "4", "5"), 5, 5);
+    verifyReverseInBetween(Arrays.asList("1", "2", "3", "4", "5"), 2, 4);
+  }
+
   private void verifyCountForNInsert(int numberOfInsert) {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     IntStream.range(0, numberOfInsert)
@@ -214,5 +226,26 @@ public class SinglyLinkedListTest {
     elements.stream()
         .forEach(singlyLinkedList::insert);
     return singlyLinkedList;
+  }
+
+  private void verifyReverseInBetween(List<String> elements, int begin, int end) {
+    SinglyLinkedList<String> linkedList = createSinglyLinkedList(elements);
+    linkedList.reverseBetween(begin, end);
+
+    List<String> reversedList = new ArrayList<>();
+    for (int i = (begin - 1); i < end; i++) {
+      reversedList.add(elements.get(i));
+    }
+    Collections.reverse(reversedList);
+
+    List<String> finalList = new ArrayList<>();
+    for (int i = 0, j = 0; i < elements.size(); i++) {
+      if ( (i + 1) >= begin && (i + 1) <= end) {
+        finalList.add(reversedList.get(j++));
+      } else {
+        finalList.add(elements.get(i));
+      }
+    }
+    assertThat(linkedList.asList()).isEqualTo(finalList);
   }
 }
