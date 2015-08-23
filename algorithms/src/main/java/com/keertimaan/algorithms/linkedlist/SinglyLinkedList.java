@@ -147,16 +147,24 @@ public class SinglyLinkedList<T> {
 
   /**
    * Reverses the order of the elements in this list. Uses iterative approach.
+   *
+   * Revision 2.
    */
   public void reverseIterative() {
     Node<T> current = head;
-    Node<T> next;
     Node<T> previous = null;
+    Node<T> next;
 
     while (current != null) {
       next = current.next;
+
+      // 1st
       current.next = previous;
+
+      // 2nd
       previous = current;
+
+      // 3rd
       current = next;
     }
 
