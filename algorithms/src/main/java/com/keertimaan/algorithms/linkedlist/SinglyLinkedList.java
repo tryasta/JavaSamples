@@ -72,14 +72,14 @@ public class SinglyLinkedList<T> {
    * @return a list containing the elements of this list.
    */
   public List<T> asList() {
-    Node<T> traversingHead = head;
-    List<T> elementList = new ArrayList<>();
-    while (traversingHead != null) {
-      elementList.add(traversingHead.value);
-      traversingHead = traversingHead.next;
+    List<T> nodes = new ArrayList<>();
+    Node<T> current = head;
+    while (current != null) {
+      nodes.add(current.value);
+      current = current.next;
     }
 
-    return elementList;
+    return nodes;
   }
 
   /**
