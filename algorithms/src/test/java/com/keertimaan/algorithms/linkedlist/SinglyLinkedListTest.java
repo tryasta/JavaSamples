@@ -17,6 +17,7 @@ package com.keertimaan.algorithms.linkedlist;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -39,18 +40,26 @@ public class SinglyLinkedListTest {
   }
 
   @Test
-  public void testNullValueInsert() {
+  public void testNullValueInsertAndFind() {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     assertThat(singlyLinkedList.insert(null)).isFalse();
     assertThat(singlyLinkedList.contains(null)).isFalse();
   }
 
   @Test
-  public void testNonNullValueInsert() {
-    final String dummyValue = "Dummy";
-    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
-    assertThat(singlyLinkedList.insert(dummyValue)).isTrue();
-    assertThat(singlyLinkedList.contains(dummyValue)).isTrue();
+  public void testNonNullValueInsertAndFind() {
+    verifyNonNullValueInsertAndFind(Collections.singletonList("Dummy"));
+    verifyNonNullValueInsertAndFind(Arrays.asList("One", "Two"));
+    verifyNonNullValueInsertAndFind(Arrays.asList("One", "Two", "Three"));
+  }
+
+  @Test
+  public void testNonNullValueInsertAndFindForLargeNumberOfData() {
+    List<String> longListOfValues = new ArrayList<>();
+    for (int i = 1; i <= 1000; i++) {
+      longListOfValues.add("Number " + i);
+    }
+    verifyNonNullValueInsertAndFind(longListOfValues);
   }
 
   @Test
@@ -173,6 +182,14 @@ public class SinglyLinkedListTest {
     IntStream.range(0, numberOfInsert)
         .forEach(index -> singlyLinkedList.insert(index + ""));
     assertThat(singlyLinkedList.count()).isEqualTo(numberOfInsert);
+  }
+
+  private void verifyNonNullValueInsertAndFind(List<String> valuesToBeInserted) {
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    valuesToBeInserted.stream()
+        .forEach(value -> assertThat(singlyLinkedList.insert(value)).isTrue());
+    valuesToBeInserted.stream()
+        .forEach(value -> assertThat(singlyLinkedList.contains(value)).isTrue());
   }
 
   private void verifyRetrievalAfterMultiInsert(List<String> elements) {
