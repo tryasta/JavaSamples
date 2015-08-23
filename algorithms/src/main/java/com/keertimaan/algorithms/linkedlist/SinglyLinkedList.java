@@ -75,17 +75,18 @@ public class SinglyLinkedList<T> {
   /**
    * Returns the current values stored in this list. The values are returned in their traversing order.
    *
+   * Revision 2.
+   *
    * @return a list containing the elements of this list.
    */
   public List<T> asList() {
-    List<T> nodes = new ArrayList<>();
+    List<T> elements = new ArrayList<>(count);
     Node<T> current = head;
     while (current != null) {
-      nodes.add(current.value);
+      elements.add(current.value);
       current = current.next;
     }
-
-    return nodes;
+    return elements;
   }
 
   /**
