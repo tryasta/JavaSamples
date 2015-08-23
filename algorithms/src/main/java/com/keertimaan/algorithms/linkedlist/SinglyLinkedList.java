@@ -156,6 +156,30 @@ public class SinglyLinkedList<T> {
     head = previous;
   }
 
+  public void reverseRecursive() {
+    if (head == null) {
+      return;
+    }
+
+    head = reverseRecursive(head);
+  }
+
+  private Node<T> reverseRecursive(Node<T> current) {
+    if (current.next == null) {
+      return current;
+    }
+
+    Node<T> runningHead = reverseRecursive(current.next);
+    Node<T> runningCurrent = runningHead;
+    while (runningCurrent.next != null) {
+      runningCurrent = runningCurrent.next;
+    }
+
+    runningCurrent.next = current;
+    current.next = null;
+    return runningHead;
+  }
+
   private static class Node<T> {
     private T value;
     private Node<T> next;

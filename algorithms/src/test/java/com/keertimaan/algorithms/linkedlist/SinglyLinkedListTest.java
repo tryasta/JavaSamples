@@ -159,11 +159,20 @@ public class SinglyLinkedListTest {
 
   @SuppressWarnings("unchecked")
   @Test
-  public void testElementReversal() {
-    verifyListReversal(Collections.EMPTY_LIST);
-    verifyListReversal(Collections.singletonList("Hello"));
-    verifyListReversal(Arrays.asList("First", "Second", "Third"));
-    verifyListReversal(Arrays.asList("First", "Second", "Third", "Fourth", "Fifth"));
+  public void testElementReversalIterative() {
+    verifyListReversalIterative(Collections.EMPTY_LIST);
+    verifyListReversalIterative(Collections.singletonList("Hello"));
+    verifyListReversalIterative(Arrays.asList("First", "Second", "Third"));
+    verifyListReversalIterative(Arrays.asList("First", "Second", "Third", "Fourth", "Fifth"));
+  }
+
+  @SuppressWarnings("unchecked")
+  @Test
+  public void testElementReversalRecursive() {
+    verifyListReversalRecursive(Collections.EMPTY_LIST);
+    verifyListReversalRecursive(Collections.singletonList("Hello"));
+    verifyListReversalRecursive(Arrays.asList("First", "Second", "Third"));
+    verifyListReversalRecursive(Arrays.asList("First", "Second", "Third", "Fourth", "Fifth"));
   }
 
   private void verifyCountForNInsert(int numberOfInsert) {
@@ -182,18 +191,28 @@ public class SinglyLinkedListTest {
   }
 
   private void verifyRetrievalAfterMultiInsert(List<String> elements) {
-    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
-    elements.stream()
-        .forEach(singlyLinkedList::insert);
+    SinglyLinkedList<String> singlyLinkedList = createSinglyLinkedList(elements);
     assertThat(singlyLinkedList.asList()).isEqualTo(elements);
   }
 
-  private void verifyListReversal(List<String> elements) {
-    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
-    elements.stream()
-        .forEach(singlyLinkedList::insert);
+  private void verifyListReversalIterative(List<String> elements) {
+    SinglyLinkedList<String> singlyLinkedList = createSinglyLinkedList(elements);
     singlyLinkedList.reverseIterative();
     Collections.reverse(elements);
     assertThat(singlyLinkedList.asList()).isEqualTo(elements);
+  }
+
+  private void verifyListReversalRecursive(List<String> elements) {
+    SinglyLinkedList<String> singlyLinkedList = createSinglyLinkedList(elements);
+    singlyLinkedList.reverseRecursive();
+    Collections.reverse(elements);
+    assertThat(singlyLinkedList.asList()).isEqualTo(elements);
+  }
+
+  private SinglyLinkedList<String> createSinglyLinkedList(List<String> elements) {
+    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+    elements.stream()
+        .forEach(singlyLinkedList::insert);
+    return singlyLinkedList;
   }
 }
