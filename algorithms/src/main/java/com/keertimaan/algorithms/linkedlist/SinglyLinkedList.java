@@ -209,7 +209,7 @@ public class SinglyLinkedList<T> {
    * Revision 2.
    *
    * @param begin the position from where to start the list reverse process.
-   * @param end the position where to stop the reversing process.
+   * @param end   the position where to stop the reversing process.
    */
   public void reverseBetween(int begin, int end) {
     if (begin == end) {
@@ -250,6 +250,35 @@ public class SinglyLinkedList<T> {
     } else {
       start.next.next = next;
       start.next = previous;
+    }
+  }
+
+  /**
+   * Removes all occurrences of the given element from the list.
+   *
+   * Revision 1.
+   *
+   * @param element the element to be removed.
+   */
+  public void removeAll(T element) {
+    while (head != null && head.value.equals(element)) {
+      head = head.next;
+    }
+
+    Node<T> current = head;
+    Node<T> previous = head;
+    while (current != null) {
+      if (current.value.equals(element)) {
+        while (current != null && current.value.equals(element)) {
+          current = current.next;
+        }
+        previous.next = current;
+      }
+
+      if (current != null) {
+        previous = current;
+        current = current.next;
+      }
     }
   }
 

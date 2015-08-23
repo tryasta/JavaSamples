@@ -187,6 +187,18 @@ public class SinglyLinkedListTest {
     verifyReverseInBetween(Arrays.asList("1", "2", "3", "4", "5"), 2, 4);
   }
 
+  @SuppressWarnings("unchecked")
+  @Test
+  public void testRemoveAll() {
+    verifyRemoveAll(Arrays.asList("1", "2", "3"), "1");
+    verifyRemoveAll(Arrays.asList("1", "2", "2", "3"), "2");
+    verifyRemoveAll(Arrays.asList("1", "2", "2", "3"), "3");
+    verifyRemoveAll(Arrays.asList("1", "2", "2", "3", "2", "5", "4", "2"), "2");
+    verifyRemoveAll(Collections.EMPTY_LIST, "2");
+    verifyRemoveAll(Collections.singletonList("1"), "1");
+    verifyRemoveAll(Collections.singletonList("1"), "2");
+  }
+
   private void verifyCountForNInsert(int numberOfInsert) {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     IntStream.range(0, numberOfInsert)
@@ -247,5 +259,11 @@ public class SinglyLinkedListTest {
       }
     }
     assertThat(linkedList.asList()).isEqualTo(finalList);
+  }
+
+  private void verifyRemoveAll(List<String> elements, String toBeRemoved) {
+    SinglyLinkedList<String> linkedList = createSinglyLinkedList(elements);
+    linkedList.removeAll(toBeRemoved);
+    assertThat(linkedList.contains(toBeRemoved)).isFalse();
   }
 }
