@@ -59,7 +59,12 @@ public class SinglyLinkedList<T> {
     if (head == null) {
       head = new Node<>(element);
     } else {
-      getLastNode().next = new Node<>(element);
+      Node<T> current = head;
+      while (current.next != null) {
+        current = current.next;
+      }
+
+      current.next = new Node<>(element);
     }
     count++;
     return true;
@@ -149,15 +154,6 @@ public class SinglyLinkedList<T> {
     }
 
     head = previous;
-  }
-
-  private Node<T> getLastNode() {
-    Node<T> traversingHead = head;
-    while (traversingHead.next != null) {
-      traversingHead = traversingHead.next;
-    }
-
-    return traversingHead;
   }
 
   private static class Node<T> {
