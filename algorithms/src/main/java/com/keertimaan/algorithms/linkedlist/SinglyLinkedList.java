@@ -181,10 +181,9 @@ public class SinglyLinkedList<T> {
 
     for (int i = 1; i <= end; i++) {
       if (i < begin) {
-        if ( (i + 1) == begin) {
+        if ((i + 1) == begin) {
           start = current;
         }
-
         current = current.next;
       } else {
         next = current.next;
