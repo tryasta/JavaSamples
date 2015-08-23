@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Singly linked list implementation. Null value insertion is not allowed. In general, insert takes O(1), and all other
- * operations take O(n) time.
+ * Singly linked list implementation. Null value insertion is not allowed. The insert, count, and empty check take
+ * O(1) time. All other operations take O(n) time.
  *
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
