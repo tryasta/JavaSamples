@@ -17,7 +17,6 @@ package com.keertimaan.algorithms.linkedlist;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Singly linked list implementation.
@@ -108,18 +107,30 @@ public class SinglyLinkedList<T> {
    * Remove the given non-null element from the list. If the element is not in the list, or null is given as the
    * argument, then nothing is removed.
    *
+   * Note to self: abar.
+   *
    * @param element the element to be removed
    * @return true if the element has been removed successfully, false otherwise.
    */
   public boolean remove(T element) {
-    Optional<T> elementToBeRemoved = Optional.of(element);
-    if (!elementToBeRemoved.isPresent()) {
+    if (head == null) {
       return false;
-    } else if (hasBeenRemovedFromHead(element)) {
+    } else if (head.value.equals(element)) {
+      head = head.next;
       return true;
     }
 
-    return removeElement(element);
+    Node<T> current = head;
+    while (current.next != null && !current.next.value.equals(element)) {
+      current = current.next;
+    }
+
+    if (current.next != null) {
+      current.next = current.next.next;
+      return true;
+    }
+
+    return false;
   }
 
   /**
@@ -147,29 +158,6 @@ public class SinglyLinkedList<T> {
     }
 
     return traversingHead;
-  }
-
-  private boolean hasBeenRemovedFromHead(T element) {
-    if (head != null && element.equals(head.value)) {
-      head = head.next;
-      return true;
-    }
-
-    return false;
-  }
-
-  private boolean removeElement(T element) {
-    Node<T> traversingHead = head;
-    while (traversingHead != null && traversingHead.next != null && !element.equals(traversingHead.next.value)) {
-      traversingHead = traversingHead.next;
-    }
-
-    if (traversingHead == null || traversingHead.next == null) {
-      return false;
-    } else {
-      traversingHead.next = traversingHead.next.next;
-      return true;
-    }
   }
 
   private static class Node<T> {
