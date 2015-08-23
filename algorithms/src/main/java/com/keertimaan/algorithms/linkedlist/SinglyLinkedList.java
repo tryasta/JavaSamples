@@ -206,7 +206,7 @@ public class SinglyLinkedList<T> {
    *
    * Note: given begin, end satisfy the following condition: 1 ≤ begin ≤ end ≤ length of list.
    *
-   * Revision 1.
+   * Revision 2.
    *
    * @param begin the position from where to start the list reverse process.
    * @param end the position where to stop the reversing process.
@@ -222,12 +222,19 @@ public class SinglyLinkedList<T> {
     Node<T> previous = null;
 
     for (int i = 1; i <= end; i++) {
+
+      // 1st
       if (i < begin) {
         if ((i + 1) == begin) {
           start = current;
         }
+
+        // 2nd
         current = current.next;
-      } else {
+      }
+
+      // 3rd
+      else {
         next = current.next;
         current.next = previous;
         previous = current;
@@ -236,9 +243,10 @@ public class SinglyLinkedList<T> {
     }
 
     if (begin == 1) {
+
+      // 4th
       start.next = next;
-      start = previous;
-      head = start;
+      head = previous;
     } else {
       start.next.next = next;
       start.next = previous;
