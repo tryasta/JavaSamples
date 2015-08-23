@@ -169,6 +169,17 @@ public class SinglyLinkedList<T> {
     head = reverseRecursive(head);
   }
 
+  /**
+   * Reverses a linked list from position begin to end. Does it in-place and in one-pass.
+   * For example, given 1->2->3->4->5->NULL, begin = 2 and end = 4, return 1->4->3->2->5->NULL.
+   *
+   * Note: given begin, end satisfy the following condition: 1 ≤ begin ≤ end ≤ length of list.
+   *
+   * Revision 1.
+   *
+   * @param begin the position from where to start the list reverse process.
+   * @param end the position where to stop the reversing process.
+   */
   public void reverseBetween(int begin, int end) {
     if (begin == end) {
       return;
