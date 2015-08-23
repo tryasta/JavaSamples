@@ -25,6 +25,7 @@ import java.util.List;
  */
 public class SinglyLinkedList<T> {
   private Node<T> head;
+  private Node<T> tail;
   private int count;
 
   /**
@@ -48,6 +49,8 @@ public class SinglyLinkedList<T> {
   /**
    * Inserts the given non-null element at the end of the list.
    *
+   * Revision 2.
+   *
    * @param element the element to be inserted.
    * @return true if the element has been successfully inserted, false otherwise (in case of <code>null</code> value.
    */
@@ -58,14 +61,12 @@ public class SinglyLinkedList<T> {
 
     if (head == null) {
       head = new Node<>(element);
+      tail = head;
     } else {
-      Node<T> current = head;
-      while (current.next != null) {
-        current = current.next;
-      }
-
-      current.next = new Node<>(element);
+      tail.next = new Node<>(element);
+      tail = tail.next;
     }
+
     count++;
     return true;
   }
