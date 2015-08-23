@@ -175,12 +175,7 @@ public class SinglyLinkedList<T> {
     }
 
     Node<T> runningHead = reverseRecursive(current.next);
-    Node<T> runningCurrent = runningHead;
-    while (runningCurrent.next != null) {
-      runningCurrent = runningCurrent.next;
-    }
-
-    runningCurrent.next = current;
+    current.next.next = current;
     current.next = null;
     return runningHead;
   }
