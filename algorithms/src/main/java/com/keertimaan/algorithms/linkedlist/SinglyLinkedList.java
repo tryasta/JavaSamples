@@ -174,33 +174,30 @@ public class SinglyLinkedList<T> {
   /**
    * Reverses the order of the elements in this list. Uses recursive approach.
    *
-   * Revision 2.
+   * Revision 3.
    */
   public void reverseRecursive() {
     if (head == null) {
       return;
     }
 
-    // 5th
-    head = reverseRecursive(head);
+    reverseRecursive(head);
   }
 
-  private Node<T> reverseRecursive(Node<T> current) {
+  private void reverseRecursive(Node<T> current) {
     if (current.next == null) {
-      return current;
+      head = current;
+      return;
     }
 
     // 1st
-    Node<T> newHead = reverseRecursive(current.next);
+    reverseRecursive(current.next);
 
     // 2nd
     current.next.next = current;
 
     // 3rd
     current.next = null;
-
-    // 4th
-    return newHead;
   }
 
   /**
