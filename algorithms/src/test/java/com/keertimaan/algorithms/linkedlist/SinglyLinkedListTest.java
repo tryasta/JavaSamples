@@ -90,17 +90,6 @@ public class SinglyLinkedListTest {
   }
 
   @Test
-  public void testFindingExistingElement() {
-    final String firstString = "One";
-    final String secondString = "Two";
-    SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
-    singlyLinkedList.insert(firstString);
-    assertThat(singlyLinkedList.contains(firstString)).isTrue();
-    singlyLinkedList.insert(secondString);
-    assertThat(singlyLinkedList.contains(secondString)).isTrue();
-  }
-
-  @Test
   public void testRemoveFromEmptyList() {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     assertThat(singlyLinkedList.remove("test")).isFalse();

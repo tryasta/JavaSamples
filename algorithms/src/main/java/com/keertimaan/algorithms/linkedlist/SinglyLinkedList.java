@@ -89,12 +89,19 @@ public class SinglyLinkedList<T> {
    * @return true if the element exists in the list, false otherwise.
    */
   public boolean contains(T element) {
-    Node<T> traversingHead = head;
-    while (traversingHead != null && !traversingHead.value.equals(element)) {
-      traversingHead = traversingHead.next;
+    if (head == null || element == null) {
+      return false;
     }
-    return Optional.ofNullable(traversingHead)
-        .isPresent();
+
+    Node<T> current = head;
+    while (current != null) {
+      if (element.equals(current.value)) {
+        return true;
+      }
+      current = current.next;
+    }
+
+    return false;
   }
 
   /**
