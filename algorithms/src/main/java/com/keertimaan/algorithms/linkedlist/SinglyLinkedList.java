@@ -170,6 +170,17 @@ public class SinglyLinkedList<T> {
     head = reverseRecursive(head);
   }
 
+  private Node<T> reverseRecursive(Node<T> current) {
+    if (current.next == null) {
+      return current;
+    }
+
+    Node<T> runningHead = reverseRecursive(current.next);
+    current.next.next = current;
+    current.next = null;
+    return runningHead;
+  }
+
   /**
    * Reverses a linked list from position begin to end. Does it in-place and in one-pass.
    * For example, given 1->2->3->4->5->NULL, begin = 2 and end = 4, return 1->4->3->2->5->NULL.
@@ -213,17 +224,6 @@ public class SinglyLinkedList<T> {
       start.next.next = next;
       start.next = previous;
     }
-  }
-
-  private Node<T> reverseRecursive(Node<T> current) {
-    if (current.next == null) {
-      return current;
-    }
-
-    Node<T> runningHead = reverseRecursive(current.next);
-    current.next.next = current;
-    current.next = null;
-    return runningHead;
   }
 
   private static class Node<T> {
