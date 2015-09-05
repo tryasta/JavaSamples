@@ -21,10 +21,8 @@ package com.keertimaan.algorithms.projecteuler;
 public class ProjectEuler1To10 {
 
   /**
-   * If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these
-   * multiples is 23.
-   *
-   * Find the sum of all the multiples of 3 or 5 below 1000.
+   * 1. If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of
+   * these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.
    *
    * Revision 1
    */
@@ -35,6 +33,6 @@ public class ProjectEuler1To10 {
 
   private static int getSumFor(int num, int limit) {
     int lastTerm = limit / num;
-    return num * ( (lastTerm * (lastTerm + 1)) / 2 );
+    return num * ((lastTerm * (lastTerm + 1)) / 2);
   }
 }
