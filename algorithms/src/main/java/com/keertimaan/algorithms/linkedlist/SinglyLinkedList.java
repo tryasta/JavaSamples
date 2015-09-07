@@ -48,9 +48,9 @@ public class SinglyLinkedList<T> {
   }
 
   /**
-   * Inserts the given non-null element at the end of the list.
+   * <p>Inserts the given non-null element at the end of the list.</p>
    *
-   * Revision 3.
+   * <p>Revision 4.</p>
    *
    * @param element the element to be inserted.
    * @return true if the element has been successfully inserted, false otherwise (in case of <code>null</code> value.
