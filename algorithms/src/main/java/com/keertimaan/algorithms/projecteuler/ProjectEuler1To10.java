@@ -47,23 +47,25 @@ public class ProjectEuler1To10 {
    * @return the sum of all the even-valued Fibonacci terms which do not exceed the limit
    */
   public static long fibonacciEvenSum(int limit) {
-    int secondLastFibonacci = 0;
+    int secondLastFibonacci;
     int lastFibonacci = 1;
-    int currentFibonacci;
+    int currentFibonacci = 1;
     long sum = 0;
 
-    while (true) {
-      currentFibonacci = secondLastFibonacci + lastFibonacci;
-      if (currentFibonacci > limit) {
-        return sum;
-      }
-
-      if ((currentFibonacci & 1) == 0) {
+    while (currentFibonacci <= limit) {
+      if (isEvenNumber(currentFibonacci)) {
         sum += currentFibonacci;
       }
       secondLastFibonacci = lastFibonacci;
       lastFibonacci = currentFibonacci;
+      currentFibonacci = secondLastFibonacci + lastFibonacci;
     }
+
+    return sum;
+  }
+
+  private static boolean isEvenNumber(int number) {
+    return (number & 1) == 0;
   }
 
   private static int getSumFor(int num, int limit) {
