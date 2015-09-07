@@ -17,6 +17,8 @@ package com.keertimaan.algorithms.projecteuler;
 
 import org.junit.Test;
 
+import java.math.BigInteger;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -39,5 +41,15 @@ public class ProjectEuler1To10Test {
     assertThat(ProjectEuler1To10.fibonacciEvenSum(8)).isEqualTo(10);
     assertThat(ProjectEuler1To10.fibonacciEvenSum(34)).isEqualTo(44);
     assertThat(ProjectEuler1To10.fibonacciEvenSum(4000000)).isEqualTo(4613732);
+  }
+
+  @Test
+  public void testLargestPrimeFactor() {
+    assertThat(ProjectEuler1To10.largestPrimeFactor(BigInteger.valueOf(3))).isEqualTo(BigInteger.valueOf(3));
+    assertThat(ProjectEuler1To10.largestPrimeFactor(BigInteger.valueOf(15))).isEqualTo(BigInteger.valueOf(5));
+    assertThat(ProjectEuler1To10.largestPrimeFactor(BigInteger.valueOf(18))).isEqualTo(BigInteger.valueOf(3));
+    assertThat(ProjectEuler1To10.largestPrimeFactor(BigInteger.valueOf(13195))).isEqualTo(BigInteger.valueOf(29));
+    assertThat(ProjectEuler1To10.largestPrimeFactor(new BigInteger("600851475143", 10))).isEqualTo(BigInteger.valueOf(
+        6857));
   }
 }

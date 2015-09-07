@@ -15,6 +15,8 @@
 
 package com.keertimaan.algorithms.projecteuler;
 
+import java.math.BigInteger;
+
 /**
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
@@ -27,7 +29,6 @@ public class ProjectEuler1To10 {
    *
    * <h1>Problem Note</h1>
    * <p><a href="https://projecteuler.net/problem=1">Problem 1.</a></p>
-   *
    * <p>Revision 1.</p>
    *
    * @param limit the limit.
@@ -65,7 +66,6 @@ public class ProjectEuler1To10 {
    *
    * <h1>Problem Note</h1>
    * <p><a href="https://projecteuler.net/problem=2">Problem 2.</a></p>
-   *
    * <p>Revision 2.</p>
    *
    * @param limit the limit
@@ -86,6 +86,31 @@ public class ProjectEuler1To10 {
     }
 
     return sum;
+  }
+
+  /**
+   * <h1>Description</h1>
+   * <p>The prime factors of 13195 are 5, 7, 13 and 29. Calculate the largest prime factor of a given number.</p>
+   *
+   * <h1>Problem Note</h1>
+   * <p><a href="https://projecteuler.net/problem=3">Problem 3.</a></p>
+   * <p>Revision 1.</p>
+   *
+   * @param number the input number
+   * @return the largest prime factor of the input number
+   */
+  public static BigInteger largestPrimeFactor(BigInteger number) {
+    BigInteger divisor = BigInteger.valueOf(2);
+    while (number.compareTo(BigInteger.ONE) > 0) {
+      BigInteger[] result = number.divideAndRemainder(divisor);
+      if ((result[1].longValue() == 0)) {
+        number = result[0];
+      } else {
+        divisor = divisor.add(BigInteger.valueOf(1));
+      }
+    }
+
+    return divisor;
   }
 
   private static int getSumFor(int num, int limit) {
