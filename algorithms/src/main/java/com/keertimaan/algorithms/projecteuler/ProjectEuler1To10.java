@@ -47,13 +47,13 @@ public class ProjectEuler1To10 {
    * @return the sum of all the even-valued Fibonacci terms which do not exceed the limit
    */
   public static long fibonacciEvenSum(int limit) {
-    int firstFibonacci = 0;
-    int secondFibonacci = 1;
+    int secondLastFibonacci = 0;
+    int lastFibonacci = 1;
     int currentFibonacci;
     long sum = 0;
 
     while (true) {
-      currentFibonacci = firstFibonacci + secondFibonacci;
+      currentFibonacci = secondLastFibonacci + lastFibonacci;
       if (currentFibonacci > limit) {
         return sum;
       }
@@ -61,8 +61,8 @@ public class ProjectEuler1To10 {
       if ((currentFibonacci & 1) == 0) {
         sum += currentFibonacci;
       }
-      firstFibonacci = secondFibonacci;
-      secondFibonacci = currentFibonacci;
+      secondLastFibonacci = lastFibonacci;
+      lastFibonacci = currentFibonacci;
     }
   }
 
