@@ -112,10 +112,10 @@ public class SinglyLinkedList<T> {
   }
 
   /**
-   * Remove the given non-null element from the list. If the element is not in the list, or null is given as the
-   * argument, then nothing is removed.
+   * <p>Remove the given non-null element from the list. If the element is not in the list, or null is given as the
+   * argument, then nothing is removed.</p>
    *
-   * Revision 3.
+   * <p>Revision 3.</p>
    *
    * @param element the element to be removed
    * @return true if the element has been removed successfully, false otherwise.
@@ -154,9 +154,9 @@ public class SinglyLinkedList<T> {
   }
 
   /**
-   * Reverses the order of the elements in this list. Uses iterative approach.
+   * <p>Reverses the order of the elements in this list. Uses iterative approach.</p>
    *
-   * Revision 2.
+   * <p>Revision 2.</p>
    */
   public void reverseIterative() {
     Node<T> current = head;
@@ -180,9 +180,9 @@ public class SinglyLinkedList<T> {
   }
 
   /**
-   * Reverses the order of the elements in this list. Uses recursive approach.
+   * <p>Reverses the order of the elements in this list. Uses recursive approach.</p>
    *
-   * Revision 3.
+   * <p>Revision 3.</p>
    */
   public void reverseRecursive() {
     if (head == null) {
@@ -209,12 +209,12 @@ public class SinglyLinkedList<T> {
   }
 
   /**
-   * Reverses a linked list from position begin to end. Does it in-place and in one-pass.
-   * For example, given 1->2->3->4->5->NULL, begin = 2 and end = 4, return 1->4->3->2->5->NULL.
+   * <p>Reverses a linked list from position begin to end. Does it in-place and in one-pass.
+   * For example, given 1->2->3->4->5->NULL, begin = 2 and end = 4, return 1->4->3->2->5->NULL.</p>
    *
-   * Note: given begin, end satisfy the following condition: 1 ≤ begin ≤ end ≤ length of list.
+   * <p>Note: given begin, end satisfy the following condition: 1 ≤ begin ≤ end ≤ length of list.</p>
    *
-   * Revision 2.
+   * <p>Revision 2.</p>
    *
    * @param begin the position from where to start the list reverse process.
    * @param end   the position where to stop the reversing process.
@@ -262,9 +262,9 @@ public class SinglyLinkedList<T> {
   }
 
   /**
-   * Removes all occurrences of the given element from the list.
+   * <p>Removes all occurrences of the given element from the list.</p>
    *
-   * Revision 1.
+   * <p>Revision 1.</p>
    *
    * @param element the element to be removed.
    */
