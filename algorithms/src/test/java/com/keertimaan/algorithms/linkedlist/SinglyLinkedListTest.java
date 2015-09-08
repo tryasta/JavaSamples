@@ -157,6 +157,23 @@ public class SinglyLinkedListTest {
     assertThat(singlyLinkedList.remove(toBeRemoved)).isFalse();
   }
 
+  @Test
+  public void testConsecutiveInsertAndRemove() {
+    SinglyLinkedList<String> linkedList = new SinglyLinkedList<>();
+    linkedList.insert("first");
+    assertThat(linkedList.remove("first")).isTrue();
+
+    linkedList.insert("first");
+    linkedList.insert("second");
+    assertThat(linkedList.remove("second")).isTrue();
+
+    linkedList.insert("second");
+    linkedList.insert("third");
+    assertThat(linkedList.remove("second")).isTrue();
+    assertThat(linkedList.contains("second")).isFalse();
+    assertThat(linkedList.asList()).isEqualTo(Arrays.asList("first", "third"));
+  }
+
   @SuppressWarnings("unchecked")
   @Test
   public void testElementReversalIterative() {
