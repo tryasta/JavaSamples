@@ -218,11 +218,11 @@ public class SinglyLinkedListTest {
 
   @Test
   public void sortedMergeShouldReturnNonNullListWhenArgumentIsNull() {
-    SinglyLinkedList<Integer> first = new SinglyLinkedList<>();
-    first.insert(1);
-    first.insert(2);
-    first.insert(3);
-    assertThat(first.mergeSorted(null)).isEqualTo(first);
+    SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
+    list.insert(1);
+    list.insert(2);
+    list.insert(3);
+    assertThat(list.mergeSorted(null)).isEqualTo(list);
   }
 
   private void verifyCountForNInsert(int numberOfInsert) {
