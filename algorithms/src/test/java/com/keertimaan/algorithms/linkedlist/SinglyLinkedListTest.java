@@ -217,7 +217,7 @@ public class SinglyLinkedListTest {
   }
 
   @Test
-  public void testSortedMerge() {
+  public void sortedMergeShouldReturnNonNullListWhenArgumentIsNull() {
     SinglyLinkedList<Integer> first = new SinglyLinkedList<>();
     first.insert(1);
     first.insert(2);
