@@ -290,6 +290,14 @@ public class SinglyLinkedList<T> {
     }
   }
 
+  public SinglyLinkedList<T> mergeSorted(SinglyLinkedList<? extends T> others) {
+    if (others == null) {
+      return this;
+    }
+
+    return null;
+  }
+
   private static class Node<T> {
     private T value;
     private Node<T> next;

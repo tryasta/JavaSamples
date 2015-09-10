@@ -216,6 +216,15 @@ public class SinglyLinkedListTest {
     verifyRemoveAll(Collections.singletonList("1"), "2");
   }
 
+  @Test
+  public void testSortedMerge() {
+    SinglyLinkedList<Integer> first = new SinglyLinkedList<>();
+    first.insert(1);
+    first.insert(2);
+    first.insert(3);
+    assertThat(first.mergeSorted(null)).isEqualTo(first);
+  }
+
   private void verifyCountForNInsert(int numberOfInsert) {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     IntStream.range(0, numberOfInsert)
