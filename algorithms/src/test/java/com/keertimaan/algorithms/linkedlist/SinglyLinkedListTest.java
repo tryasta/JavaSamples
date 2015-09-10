@@ -225,6 +225,23 @@ public class SinglyLinkedListTest {
     assertThat(list.mergeSorted(null)).isEqualTo(list);
   }
 
+  @Test
+  public void sortedMergeShouldMergeTwoRandomList() {
+    SinglyLinkedList<Integer> first = new SinglyLinkedList<>();
+    first.insert(1);
+    first.insert(3);
+    first.insert(5);
+    first.insert(6);
+
+    SinglyLinkedList<Integer> second = new SinglyLinkedList<>();
+    second.insert(2);
+    second.insert(4);
+    second.insert(7);
+
+    assertThat(first.mergeSorted(second)
+        .asList()).isEqualTo(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
+  }
+
   private void verifyCountForNInsert(int numberOfInsert) {
     SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
     IntStream.range(0, numberOfInsert)
@@ -278,7 +295,7 @@ public class SinglyLinkedListTest {
 
     List<String> finalList = new ArrayList<>();
     for (int i = 0, j = 0; i < elements.size(); i++) {
-      if ( (i + 1) >= begin && (i + 1) <= end) {
+      if ((i + 1) >= begin && (i + 1) <= end) {
         finalList.add(reversedList.get(j++));
       } else {
         finalList.add(elements.get(i));

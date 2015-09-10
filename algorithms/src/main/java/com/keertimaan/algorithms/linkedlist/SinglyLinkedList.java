@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
-public class SinglyLinkedList<T> {
+public class SinglyLinkedList<T extends Comparable<T>> {
   private Node<T> head;
   private Node<T> tail;
   private int count;
@@ -290,12 +290,53 @@ public class SinglyLinkedList<T> {
     }
   }
 
-  public SinglyLinkedList<T> mergeSorted(SinglyLinkedList<? extends T> others) {
+  public SinglyLinkedList<T> mergeSorted(SinglyLinkedList<T> others) {
     if (others == null) {
       return this;
     }
 
-    return null;
+    Node<T> thisCurrent = head;
+    Node<T> thatCurrent = others.head;
+    SinglyLinkedList<T> mergedList = new SinglyLinkedList<>();
+    if (thisCurrent.value.compareTo(thatCurrent.value) <=0 ) {
+      mergedList.insert(thisCurrent.value);
+      thisCurrent = thisCurrent.next;
+    } else {
+      mergedList.insert(thatCurrent.value);
+      thatCurrent = thatCurrent.next;
+    }
+    Node<T> current = mergedList.head;
+
+    while (thisCurrent != null && thatCurrent != null) {
+      if (thisCurrent.value.compareTo(thatCurrent.value) <=0 ) {
+        current.next = new Node<>(thisCurrent.value);
+        thisCurrent = thisCurrent.next;
+      } else {
+        current.next = new Node<>(thatCurrent.value);
+        thatCurrent = thatCurrent.next;
+      }
+
+      current = current.next;
+    }
+
+    while (thisCurrent != null) {
+      current.next = new Node<>(thisCurrent.value);
+      current = current.next;
+      thisCurrent = thisCurrent.next;
+    }
+
+    while (thatCurrent != null) {
+      current.next = new Node<>(thatCurrent.value);
+      current = current.next;
+      thatCurrent = thatCurrent.next;
+    }
+
+    return mergedList;
+  }
+
+  @Override
+  public String toString() {
+    return asList().toString();
   }
 
   private static class Node<T> {
