@@ -290,25 +290,30 @@ public class SinglyLinkedList<T extends Comparable<T>> {
     }
   }
 
-  public SinglyLinkedList<T> mergeSorted(SinglyLinkedList<T> others) {
-    if (others == null) {
-      return this;
+  public static <T extends Comparable<T>> SinglyLinkedList<T> sortedMerge(SinglyLinkedList<T> first,
+      SinglyLinkedList<T> second) {
+
+    if (first == null) {
+      return second;
+    }
+    else if (second == null) {
+      return first;
     }
 
-    Node<T> thisCurrent = head;
-    Node<T> thatCurrent = others.head;
+    Node<T> thisCurrent = first.head;
+    Node<T> thatCurrent = second.head;
     SinglyLinkedList<T> mergedList = new SinglyLinkedList<>();
-    if (thisCurrent.value.compareTo(thatCurrent.value) <=0 ) {
+    if (thisCurrent.value.compareTo(thatCurrent.value) <= 0) {
       mergedList.insert(thisCurrent.value);
       thisCurrent = thisCurrent.next;
     } else {
       mergedList.insert(thatCurrent.value);
       thatCurrent = thatCurrent.next;
     }
-    Node<T> current = mergedList.head;
 
+    Node<T> current = mergedList.head;
     while (thisCurrent != null && thatCurrent != null) {
-      if (thisCurrent.value.compareTo(thatCurrent.value) <=0 ) {
+      if (thisCurrent.value.compareTo(thatCurrent.value) <= 0) {
         current.next = new Node<>(thisCurrent.value);
         thisCurrent = thisCurrent.next;
       } else {

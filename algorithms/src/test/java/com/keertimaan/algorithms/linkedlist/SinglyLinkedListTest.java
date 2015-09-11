@@ -217,12 +217,18 @@ public class SinglyLinkedListTest {
   }
 
   @Test
-  public void sortedMergeShouldReturnNonNullListWhenArgumentIsNull() {
+  public void sortedMergeShouldReturnNonNullListWhenExactlyOneArgumentIsNull() {
     SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
     list.insert(1);
     list.insert(2);
     list.insert(3);
-    assertThat(list.mergeSorted(null)).isEqualTo(list);
+    assertThat(SinglyLinkedList.sortedMerge(null, list)).isEqualTo(list);
+    assertThat(SinglyLinkedList.sortedMerge(list, null)).isEqualTo(list);
+  }
+
+  @Test
+  public void sortedMergeShouldReturnNullWhenBothArgumentsAreNull() {
+    assertThat(SinglyLinkedList.sortedMerge(null, null)).isNull();
   }
 
   @Test
@@ -238,7 +244,7 @@ public class SinglyLinkedListTest {
     second.insert(4);
     second.insert(7);
 
-    assertThat(first.mergeSorted(second)
+    assertThat(SinglyLinkedList.sortedMerge(first, second)
         .asList()).isEqualTo(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
   }
 
