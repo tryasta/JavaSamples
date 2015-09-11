@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
-public class SinglyLinkedList<T extends Comparable<T>> {
+public class SinglyLinkedList<T> {
   private Node<T> head;
   private Node<T> tail;
   private int count;
@@ -295,8 +295,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 
     if (first == null) {
       return second;
-    }
-    else if (second == null) {
+    } else if (second == null) {
       return first;
     }
 
