@@ -290,6 +290,18 @@ public class SinglyLinkedList<T> {
     }
   }
 
+  /**
+   * <p>Merges two sorted lists (in ascending order), and returns a single list containing all the elements in ascending
+   * order.</p>
+   *
+   * <p>If both arguments are null, then this method also returns null.</p>
+   *
+   * @param first a list whose elements are sorted in ascending order.
+   * @param second a list whose elements are sorted in ascending order.
+   * @param <T> a type which implements the <tt>Comparable&lt;T&gt;</tt> interface.
+   * @return a list containing all elements from both list, sorted in ascending order.
+   * @see Comparable
+   */
   public static <T extends Comparable<T>> SinglyLinkedList<T> sortedMerge(SinglyLinkedList<T> first,
       SinglyLinkedList<T> second) {
 
