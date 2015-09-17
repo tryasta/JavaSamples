@@ -13,13 +13,19 @@
  * limitations under the License.
  */
 
-package com.keertimaan.springexample;
+package com.keertimaan.springexample.javaconfig.autowiring;
 
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.stereotype.Component;
 
 /**
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
-@ContextConfiguration(classes = SpringConfiguration.class)
-public class AbstractSpringTest {
+@Component
+@First
+public class FirstInjectable implements Injectable {
+
+  @Override
+  public void sayHello() {
+    System.out.println("I am FirstInjectable!");
+  }
 }

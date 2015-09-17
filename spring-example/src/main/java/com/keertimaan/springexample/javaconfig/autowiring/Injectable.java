@@ -13,21 +13,11 @@
  * limitations under the License.
  */
 
-package com.keertimaan.springexample.autowiring;
-
-import org.springframework.stereotype.Component;
-
-import javax.inject.Qualifier;
+package com.keertimaan.springexample.javaconfig.autowiring;
 
 /**
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
-@Component
-@First
-public class FirstInjectable implements Injectable {
-
-  @Override
-  public void sayHello() {
-    System.out.println("I am FirstInjectable!");
-  }
+public interface Injectable {
+  void sayHello();
 }

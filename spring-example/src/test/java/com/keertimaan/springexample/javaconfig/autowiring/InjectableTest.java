@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-package com.keertimaan.springexample.autowiring;
+package com.keertimaan.springexample.javaconfig.autowiring;
 
-import com.keertimaan.springexample.AbstractSpringTest;
+import com.keertimaan.springexample.javaconfig.AbstractSpringTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

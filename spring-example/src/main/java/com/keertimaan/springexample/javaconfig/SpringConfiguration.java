@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *    http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,19 +13,15 @@
  * limitations under the License.
  */
 
-package com.keertimaan.springexample.autowiring;
+package com.keertimaan.springexample.javaconfig;
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
-@Component
-@Second
-public class SecondInjectable implements Injectable {
-
-  @Override
-  public void sayHello() {
-    System.out.println("Hi, I am second injectable!");
-  }
+@Configuration
+@ComponentScan
+public class SpringConfiguration {
 }

@@ -5,10 +5,11 @@
  * must be included on all copies, modifications and derivatives of this work.
  */
 
-package com.keertimaan.springexample.autowiring;
+package com.keertimaan.springexample.javaconfig.autowiring;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Documented;
+import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -18,5 +19,5 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Qualifier
-public @interface Second {
+public @interface First {
 }

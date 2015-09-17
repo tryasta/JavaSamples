@@ -13,15 +13,13 @@
  * limitations under the License.
  */
 
-package com.keertimaan.springexample;
+package com.keertimaan.springexample.javaconfig;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.ContextConfiguration;
 
 /**
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
-@Configuration
-@ComponentScan
-public class SpringConfiguration {
+@ContextConfiguration(classes = SpringConfiguration.class)
+public class AbstractSpringTest {
 }
