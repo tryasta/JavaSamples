@@ -1,0 +1,11 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="beanA" class="com.keertimaan.springexample.xmlconfig.autowiring.BeanA"/>
+  <bean id="beanB" class="com.keertimaan.springexample.xmlconfig.autowiring.BeanB"/>
+  <bean id="beanD" class="com.keertimaan.springexample.xmlconfig.autowiring.BeanD"/>
+  <bean id="beanC" class="com.keertimaan.springexample.xmlconfig.autowiring.BeanC" autowire="constructor"/>
+
+</beans>
