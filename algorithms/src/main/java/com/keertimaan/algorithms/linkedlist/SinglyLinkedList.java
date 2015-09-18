@@ -176,6 +176,7 @@ public class SinglyLinkedList<T> {
     Node<T> current = head;
     Node<T> next;
 
+    tail = head;
     while (current != null) {
 
       /**
@@ -210,30 +211,15 @@ public class SinglyLinkedList<T> {
   /**
    * <p>Reverses the order of the elements in this list. Uses recursive approach.</p>
    *
-   * <p>Revision 3.</p>
+   * <p>Revision 4.</p>
    */
   public void reverseRecursive() {
-    if (head == null) {
+    if (head == tail) {
       return;
     }
 
-    reverseRecursive(head);
-  }
-
-  private void reverseRecursive(Node<T> current) {
-    if (current.next == null) {
-      head = current;
-      return;
-    }
-
-    // 1st
-    reverseRecursive(current.next);
-
-    // 2nd
-    current.next.next = current;
-
-    // 3rd
-    current.next = null;
+    tail = head;
+    head = reverseRecursive(head);
   }
 
   /**
@@ -391,5 +377,25 @@ public class SinglyLinkedList<T> {
     public Node(T value) {
       this.value = value;
     }
+  }
+
+  private Node<T> reverseRecursive(Node<T> current) {
+
+    // 1st
+    if (current.next == null) {
+      return current;
+    }
+
+    // 2nd
+    Node<T> runningHead = reverseRecursive(current.next);
+
+    // 3rd
+    current.next.next = current;
+
+    // 4th
+    current.next = null;
+
+    // 5th
+    return runningHead;
   }
 }
