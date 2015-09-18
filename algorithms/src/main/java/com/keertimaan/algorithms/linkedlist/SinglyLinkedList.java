@@ -17,6 +17,7 @@ package com.keertimaan.algorithms.linkedlist;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <p>Singly linked list implementation. Null value insertion is not allowed. The insert, count, and empty check take
@@ -89,24 +90,27 @@ public class SinglyLinkedList<T> {
   /**
    * <p>Inserts the given non-null element at the end of the list.</p>
    *
-   * <p>Revision 4.</p>
+   * <p>Revision 5.</p>
    *
    * @param element the element to be inserted.
    * @return true if the element has been successfully inserted, false otherwise (in case of <code>null</code> value.
    */
   public boolean insert(T element) {
-    if (element == null) {
+    if (!Optional.ofNullable(element)
+        .isPresent()) {
       return false;
     }
 
-    if (head == null) {
-      head = new Node<>(element);
-      tail = head;
-    } else {
+    if (Optional.ofNullable(head)
+        .isPresent()) {
       tail.next = new Node<>(element);
       tail = tail.next;
+    } else {
+      head = new Node<>(element);
+      tail = head;
     }
 
+    // 1st
     count++;
     return true;
   }
@@ -291,14 +295,15 @@ public class SinglyLinkedList<T> {
   }
 
   /**
-   * <p>Merges two sorted lists (in ascending order), and returns a single list containing all the elements in ascending
+   * <p>Merges two sorted lists (in ascending order), and returns a single list containing all the elements in
+   * ascending
    * order.</p>
    *
    * <p>If both arguments are null, then this method also returns null.</p>
    *
-   * @param first a list whose elements are sorted in ascending order.
+   * @param first  a list whose elements are sorted in ascending order.
    * @param second a list whose elements are sorted in ascending order.
-   * @param <T> a type which implements the <tt>Comparable&lt;T&gt;</tt> interface.
+   * @param <T>    a type which implements the <tt>Comparable&lt;T&gt;</tt> interface.
    * @return a list containing all elements from both list, sorted in ascending order.
    * @see Comparable
    */
