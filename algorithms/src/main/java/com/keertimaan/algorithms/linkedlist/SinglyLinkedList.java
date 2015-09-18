@@ -50,17 +50,18 @@ public class SinglyLinkedList<T> {
   /**
    * <p>Returns the current values stored in this list. The values are returned in their traversing order.</p>
    *
-   * <p>Revision 2.</p>
+   * <p>Revision 3.</p>
    *
    * @return a list containing the elements of this list.
    */
   public List<T> asList() {
-    List<T> elements = new ArrayList<>(count);
     Node<T> current = head;
+    List<T> elements = new ArrayList<>(count);
     while (current != null) {
       elements.add(current.value);
       current = current.next;
     }
+
     return elements;
   }
 
