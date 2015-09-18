@@ -165,26 +165,45 @@ public class SinglyLinkedList<T> {
   /**
    * <p>Reverses the order of the elements in this list. Uses iterative approach.</p>
    *
-   * <p>Revision 2.</p>
+   * <p>Revision 3.</p>
    */
   public void reverseIterative() {
+    if (head == tail) {
+      return;
+    }
+
+    Node<T> previous = tail.next;
     Node<T> current = head;
-    Node<T> previous = null;
     Node<T> next;
 
     while (current != null) {
+
+      /**
+       * a. Save the reference to the next element (so that we can move current)
+       */
+      // 1st
       next = current.next;
 
-      // 1st
+      /**
+       * b. Modify current.next pointer to point to the previous element
+       */
+      // 2nd
       current.next = previous;
 
-      // 2nd
+      /**
+       * c. Make current element the previous element
+       */
+      // 3rd
       previous = current;
 
-      // 3rd
+      /**
+       * d. Move the current element to next element;
+       */
+      // 4th
       current = next;
     }
 
+    // 5th
     head = previous;
   }
 
