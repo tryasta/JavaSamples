@@ -119,39 +119,44 @@ public class SinglyLinkedList<T> {
    * <p>Remove the given non-null element from the list. If the element is not in the list, or null is given as the
    * argument, then nothing is removed.</p>
    *
-   * <p>Revision 3.</p>
+   * <p>Revision 4.</p>
    *
    * @param element the element to be removed
    * @return true if the element has been removed successfully, false otherwise.
    */
   public boolean remove(T element) {
-    if (element == null || head == null) {
+    // 1st
+    if (head == null) {
       return false;
     }
 
-    if (element.equals(head.value)) {
+    // 2nd
+    if (head.value.equals(element)) {
+
+      // 3rd
       if (head == tail) {
-        head = null;
         tail = null;
-      } else {
-        head = head.next;
       }
 
+      head = head.next;
       return true;
     }
 
     Node<T> current = head;
-    while (current.next != null) {
-      if (element.equals(current.next.value)) {
-        if (current.next == tail) {
-          tail = current;
-        }
+    while (current.next != null && !current.next.value.equals(element)) {
+      current = current.next;
+    }
 
-        current.next = current.next.next;
-        return true;
+    // 4th
+    if (current.next != null) {
+
+      // 5th
+      if (current.next == tail) {
+        tail = current;
       }
 
-      current = current.next;
+      current.next = current.next.next;
+      return true;
     }
 
     return false;
