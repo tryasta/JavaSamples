@@ -68,19 +68,18 @@ public class SinglyLinkedList<T> {
   /**
    * <p>Checks whether or not the given element exists in this list.</p>
    *
+   * <p>Revision 2.</p>
+   *
    * @param element the element to look for.
    * @return true if the element exists in the list, false otherwise.
    */
   public boolean contains(T element) {
-    if (head == null || element == null) {
-      return false;
-    }
-
     Node<T> current = head;
     while (current != null) {
-      if (element.equals(current.value)) {
+      if (current.value.equals(element)) {
         return true;
       }
+
       current = current.next;
     }
 
