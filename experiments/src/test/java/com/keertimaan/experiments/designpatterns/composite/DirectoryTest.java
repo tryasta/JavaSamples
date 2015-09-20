@@ -20,7 +20,7 @@ import org.junit.Test;
 /**
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
-public class CompositeTest {
+public class DirectoryTest {
 
   @Test
   public void testPattern() {
