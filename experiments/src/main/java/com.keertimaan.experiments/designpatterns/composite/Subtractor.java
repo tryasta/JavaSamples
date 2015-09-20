@@ -21,7 +21,7 @@ package com.keertimaan.experiments.designpatterns.composite;
 public class Subtractor extends BinaryExpression {
 
   public Subtractor(Expression leftExpression, Expression rightExpression) {
-    super(rightExpression, leftExpression);
+    super(leftExpression, rightExpression);
   }
 
   @Override

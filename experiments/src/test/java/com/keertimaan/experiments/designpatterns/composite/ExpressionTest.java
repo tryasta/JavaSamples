@@ -50,6 +50,28 @@ public class ExpressionTest {
     Expression leftExpression = new Constant(leftValue);
     Expression rightExpression = new Constant(rightValue);
     Expression subtractingExpression = new Subtractor(leftExpression, rightExpression);
-    assertThat(subtractingExpression.getValue()).isEqualTo(4.0);
+    assertThat(subtractingExpression.getValue()).isEqualTo(leftValue - rightValue);
+  }
+
+  @Test
+  public void multiplierShouldMultiplyTwoValues() {
+    double leftValue = 5.0;
+    double rightValue = 3.0;
+
+    Expression leftExpression = new Constant(leftValue);
+    Expression rightExpression = new Constant(rightValue);
+    Expression multiplyingExpression = new Multiplier(leftExpression, rightExpression);
+    assertThat(multiplyingExpression.getValue()).isEqualTo(leftValue * rightValue);
+  }
+
+  @Test
+  public void dividerShouldDivideTwoValues() {
+    double leftValue = 20.0;
+    double rightValue = 2.0;
+
+    Expression leftExpression = new Constant(leftValue);
+    Expression rightExpression = new Constant(rightValue);
+    Expression dividingExpression = new Divider(leftExpression, rightExpression);
+    assertThat(dividingExpression.getValue()).isEqualTo(leftValue / rightValue);
   }
 }
