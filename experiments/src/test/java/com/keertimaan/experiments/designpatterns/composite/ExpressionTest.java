@@ -27,7 +27,7 @@ public class ExpressionTest {
   @Test
   public void constantShouldReturnValueAsIs() {
     final double value = 3.0;
-    Expression e =  new Constant(value);
+    Expression e = new Constant(value);
     assertThat(e.getValue()).isEqualTo(value);
   }
 
@@ -73,5 +73,15 @@ public class ExpressionTest {
     Expression rightExpression = new Constant(rightValue);
     Expression dividingExpression = new Divider(leftExpression, rightExpression);
     assertThat(dividingExpression.getValue()).isEqualTo(leftValue / rightValue);
+  }
+
+  @Test
+  public void shouldCalculateComplexExpression() {
+    Expression threePlusFive = new Adder(new Constant(3), new Constant(5));
+    Expression threePlusFiveMultiply100 = new Multiplier(threePlusFive, new Constant(100));
+    Expression eightyTwoMinus2 = new Subtractor(new Constant(82), new Constant(2));
+    Expression threePlusFiveMultiply100DividedByEightyTwoMinus2 =
+        new Divider(threePlusFiveMultiply100, eightyTwoMinus2);
+    assertThat(threePlusFiveMultiply100DividedByEightyTwoMinus2.getValue()).isEqualTo(10);
   }
 }
