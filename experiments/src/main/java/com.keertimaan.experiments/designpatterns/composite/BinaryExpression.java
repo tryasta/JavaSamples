@@ -18,14 +18,12 @@ package com.keertimaan.experiments.designpatterns.composite;
 /**
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
-public class Adder extends BinaryExpression {
+public abstract class BinaryExpression implements Expression {
+  protected final Expression leftExpression;
+  protected final Expression rightExpression;
 
-  public Adder(Expression leftExpression, Expression rightExpression) {
-    super(leftExpression, rightExpression);
-  }
-
-  @Override
-  public double getValue() {
-    return leftExpression.getValue() + rightExpression.getValue();
+  public BinaryExpression(Expression rightExpression, Expression leftExpression) {
+    this.rightExpression = rightExpression;
+    this.leftExpression = leftExpression;
   }
 }

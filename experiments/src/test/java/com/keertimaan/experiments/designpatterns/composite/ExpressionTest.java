@@ -41,4 +41,15 @@ public class ExpressionTest {
     Expression addingExpression = new Adder(leftExpression, rightExpression);
     assertThat(addingExpression.getValue()).isEqualTo(5.0);
   }
+
+  @Test
+  public void subtractorShouldSubtractTwoValues() {
+    double leftValue = 5.0;
+    double rightValue = 1.0;
+
+    Expression leftExpression = new Constant(leftValue);
+    Expression rightExpression = new Constant(rightValue);
+    Expression subtractingExpression = new Subtractor(leftExpression, rightExpression);
+    assertThat(subtractingExpression.getValue()).isEqualTo(4.0);
+  }
 }

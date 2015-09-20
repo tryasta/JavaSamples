@@ -18,14 +18,15 @@ package com.keertimaan.experiments.designpatterns.composite;
 /**
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
  */
-public class Adder extends BinaryExpression {
+public class Subtractor extends BinaryExpression {
 
-  public Adder(Expression leftExpression, Expression rightExpression) {
-    super(leftExpression, rightExpression);
+  public Subtractor(Expression leftExpression, Expression rightExpression) {
+    super(rightExpression, leftExpression);
   }
 
   @Override
   public double getValue() {
-    return leftExpression.getValue() + rightExpression.getValue();
+    return leftExpression.getValue() - rightExpression.getValue();
   }
+
 }
