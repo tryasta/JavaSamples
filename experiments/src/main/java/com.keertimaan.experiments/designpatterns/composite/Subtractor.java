@@ -28,5 +28,4 @@ public class Subtractor extends BinaryExpression {
   public double getValue() {
     return leftExpression.getValue() - rightExpression.getValue();
   }
-
 }
