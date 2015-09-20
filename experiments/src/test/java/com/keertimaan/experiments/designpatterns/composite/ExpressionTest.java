@@ -26,19 +26,15 @@ public class ExpressionTest {
 
   @Test
   public void constantShouldReturnValueAsIs() {
-    final double value = 3.0;
-    Expression e = new Constant(value);
-    assertThat(e.getValue()).isEqualTo(value);
+    double value = 3.0;
+    assertThat(new Constant(value).getValue()).isEqualTo(value);
   }
 
   @Test
   public void adderShouldAddTwoValues() {
     double leftValue = 2.0;
     double rightValue = 3.0;
-
-    Expression leftExpression = new Constant(leftValue);
-    Expression rightExpression = new Constant(rightValue);
-    Expression addingExpression = new Adder(leftExpression, rightExpression);
+    Expression addingExpression = new Adder(new Constant(leftValue), new Constant(rightValue));
     assertThat(addingExpression.getValue()).isEqualTo(5.0);
   }
 
@@ -46,10 +42,7 @@ public class ExpressionTest {
   public void subtractorShouldSubtractTwoValues() {
     double leftValue = 5.0;
     double rightValue = 1.0;
-
-    Expression leftExpression = new Constant(leftValue);
-    Expression rightExpression = new Constant(rightValue);
-    Expression subtractingExpression = new Subtractor(leftExpression, rightExpression);
+    Expression subtractingExpression = new Subtractor(new Constant(leftValue), new Constant(rightValue));
     assertThat(subtractingExpression.getValue()).isEqualTo(leftValue - rightValue);
   }
 
@@ -57,10 +50,7 @@ public class ExpressionTest {
   public void multiplierShouldMultiplyTwoValues() {
     double leftValue = 5.0;
     double rightValue = 3.0;
-
-    Expression leftExpression = new Constant(leftValue);
-    Expression rightExpression = new Constant(rightValue);
-    Expression multiplyingExpression = new Multiplier(leftExpression, rightExpression);
+    Expression multiplyingExpression = new Multiplier(new Constant(leftValue), new Constant(rightValue));
     assertThat(multiplyingExpression.getValue()).isEqualTo(leftValue * rightValue);
   }
 
@@ -68,10 +58,7 @@ public class ExpressionTest {
   public void dividerShouldDivideTwoValues() {
     double leftValue = 20.0;
     double rightValue = 2.0;
-
-    Expression leftExpression = new Constant(leftValue);
-    Expression rightExpression = new Constant(rightValue);
-    Expression dividingExpression = new Divider(leftExpression, rightExpression);
+    Expression dividingExpression = new Divider(new Constant(leftValue), new Constant(rightValue));
     assertThat(dividingExpression.getValue()).isEqualTo(leftValue / rightValue);
   }
 
