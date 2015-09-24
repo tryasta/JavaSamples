@@ -30,7 +30,7 @@ public class StringProblems {
    * inputs, and then matches them with one another to see if they match. As far as I know, this is the most
    * efficient approach of determining anagrams (O(n)).</p>
    *
-   * @param first the first input string
+   * @param first  the first input string
    * @param second the second input string
    * @return <tt>true</tt> if the inputs are anagram, <tt>false</tt> otherwise.
    */
@@ -84,5 +84,19 @@ public class StringProblems {
     }
 
     return true;
+  }
+
+  /**
+   * <p>String reverse, a recursive implementation.</p>
+   *
+   * @param source the string to reverse.
+   * @return the reversed string.
+   */
+  public static String reverse(String source) {
+    if (source == null || source.length() == 0) {
+      return source;
+    } else {
+      return source.charAt(source.length() - 1) + reverse(source.substring(0, source.length() - 1));
+    }
   }
 }
