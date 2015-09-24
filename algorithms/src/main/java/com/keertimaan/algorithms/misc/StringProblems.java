@@ -93,7 +93,7 @@ public class StringProblems {
    * @return the reversed string.
    */
   public static String reverse(String source) {
-    if (source == null || source.length() == 0) {
+    if (source == null || source.isEmpty()) {
       return source;
     } else {
       return source.charAt(source.length() - 1) + reverse(source.substring(0, source.length() - 1));
