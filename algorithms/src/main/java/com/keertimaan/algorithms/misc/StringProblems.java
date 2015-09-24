@@ -16,7 +16,9 @@
 package com.keertimaan.algorithms.misc;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
@@ -50,5 +52,37 @@ public class StringProblems {
     }
 
     return histogram;
+  }
+
+  /**
+   * <p>Checks whether the string contains all unique characters or not. This implementation uses a <tt>HashSet</tt> to
+   * check for duplicacy as the <tt>add</tt> method will returns false if you try to add the same character again.</p>
+   *
+   * <p>Some important points about this implementation -</p>
+   *
+   * <ul>
+   * <li>This implementation runs on O(n) time, but it uses an additional data structure and O(n) extra space.</li>
+   * <li> If we do not want to use any additional data structure, then we can sort the original string and then
+   * compare the neighbouring characters for match. However, this method destroys the original string.</li>
+   * <li>If we do not want to use additional data structure and are not allowed to destroy the string, then the
+   * only other option is to check each character against the whole string, whose running time will be O(n^2).</li>
+   * </ul>
+   *
+   * @param source the string to check for.
+   * @return <tt>true</tt> if the string contains no duplicated characters, <tt>false</tt> otherwise.
+   */
+  public static boolean hasAllUniqueCharacters(String source) {
+    if (source == null) {
+      return false;
+    }
+
+    Set<Character> characters = new HashSet<>(source.length());
+    for (int i = 0; i < source.length(); i++) {
+      if (!characters.add(source.charAt(i))) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }
