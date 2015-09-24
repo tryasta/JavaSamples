@@ -56,6 +56,6 @@ public class StringRemoveDuplicatesTest {
 
   @Test
   public void shouldNotChangeCharacterOrdersAfterRemovingDuplicates() {
-    assertThat(StringProblems.removeDuplicatesWithDataStructure("ddcceebbaa")).isEqualTo("dceba");
+    assertThat(StringProblems.removeDuplicatesWithDataStructure("dcceebbaad")).isEqualTo("dceba");
   }
 }
