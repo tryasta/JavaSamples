@@ -17,8 +17,11 @@ package com.keertimaan.algorithms.misc;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
+
+import static java.util.stream.Collectors.joining;
 
 /**
  * @author <a href="http://www.codesod.com">Sayem Ahmed</a>
@@ -98,5 +101,28 @@ public class StringProblems {
     } else {
       return source.charAt(source.length() - 1) + reverse(source.substring(0, source.length() - 1));
     }
+  }
+
+  /**
+   * <p>Removes all the duplicate characters from a String. It uses a <tt>LinkedHashSet</tt> for removing duplicate
+   * characters.</p>
+   *
+   * @param source the string from which to remove duplicates.
+   * @return the string after removing duplicate characters.
+   * @see LinkedHashSet
+   */
+  public static String removeDuplicatesWithDataStructure(String source) {
+    if (source == null) {
+      return null;
+    }
+
+    Set<Character> characters = new LinkedHashSet<>(source.length());
+    for (int i = 0; i < source.length(); i++) {
+      characters.add(source.charAt(i));
+    }
+
+    return characters.stream()
+        .map(Object::toString)
+        .collect(joining());
   }
 }
